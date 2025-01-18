@@ -97,6 +97,6 @@ if __name__ == "__main__":
     for site in sites:
         result = check_in(site['url'], site.get('name', 'Unknown'), site['cookie'])
         if telegram_bot_token and chat_id:
-          telegram_Bot(telegram_bot_token,chat_id,thread_id,result)
+          telegram_Bot(telegram_bot_token,chat_id,result,thread_id)
         if pushplus_token:
           pushplus_ts(pushplus_token, result)
