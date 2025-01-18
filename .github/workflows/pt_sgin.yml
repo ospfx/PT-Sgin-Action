@@ -1,0 +1,34 @@
+name: pt站点签到
+
+on:
+  push:
+    branches:
+      - main  # 在 main 分支上进行推送时触发 
+  schedule:
+    - cron: '00 16 * * *'  # 每天凌晨 12 点执行 
+  workflow_dispatch:  # 添加手动触发
+
+jobs:
+  run-nodeseek-sign:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Set up Python environment
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11.8'
+
+      - name: install
+        run: pip install requests curl_cffi
+
+      - name: run
+        env:
+          SITE0: ${{ secrets.SITE0 }}
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+          THREAD_ID: ${{ secrets.THREAD_ID }}
+        run: python pt_sign.py
