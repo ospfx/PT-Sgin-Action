@@ -2,7 +2,7 @@
 PT站点Action自动签到保活
 PT站点签到，使用github action自动签到
 需要自行在setting中添加 Repository secrets
-
+添加多站点需要在pt_sgin.yml添加  SITE0: ${{ secrets.SITE0 }} 
 
 |  名称  |                 含义                  |
 | :----: | :-----------------------------------: |
