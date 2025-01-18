@@ -17,8 +17,8 @@ SITE0 - SITEn
 ````
 [
     {
-        'name':'pthome',
-        'url':'https://pthome.net', 
+        'name':'ptxxx',
+        'url':'https://ptxxx.xx', 
         'cookie':'cf_clearance=xxx-xx-1.0.1.1-xx.xx; c_secure_uid=NDY3; c_secure_pass=xx; c_secure_ssl=xx%3D%3D; c_secure_tracker_ssl=xx%3D%3D; c_secure_login=xx%3D%3D; Hm_lvt_41bc5487f653d238d282d7de5990fd73=xx; HMACCOUNT=xx; Hm_lpvt_41bc5487f653d238d282d7de5990fd73=xx',
 	}
 ]
