@@ -11,7 +11,7 @@ chat_id = os.environ.get("CHAT_ID","")
 thread_id = os.environ.get("THREAD_ID","")
 telegram_api_url = os.environ.get("TELEGRAM_API_URL","https://api.telegram.org")
 
-def telegram_Bot(token,chat_id,message):
+def telegram_Bot(token,chat_id,thread_id=None,message):
     url = f'{telegram_api_url}/bot{token}/sendMessage'
     data = {
         'chat_id': chat_id,
