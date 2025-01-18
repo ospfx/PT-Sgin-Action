@@ -56,7 +56,7 @@ def parse_sites_from_env():
     sites = []
     site_index = 0
     while True:
-        site_data = os.getenv(f'SITE{site_index}')
+        site_data = os.environ.get(f'SITE{site_index}')
         if not site_data:
             break
         try:
