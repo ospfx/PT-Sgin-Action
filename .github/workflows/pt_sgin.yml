@@ -9,7 +9,7 @@ on:
   workflow_dispatch:  # 添加手动触发
 
 jobs:
-  run-nodeseek-sign:
+  run-pt-sign:
     runs-on: ubuntu-latest
 
     steps:
