@@ -94,7 +94,7 @@ def check_in(url, name, cookie):
 if __name__ == "__main__":
     sites = parse_sites_from_env()
     for site in sites:
-        check_in(site['url'], site.get('name', 'Unknown'), site['cookie'])
+        result = check_in(site['url'], site.get('name', 'Unknown'), site['cookie'])
         if telegram_bot_token and chat_id:
           telegram_Bot(telegram_bot_token, chat_id, thread_id, result)
         if pushplus_token:
