@@ -82,19 +82,22 @@ def check_in(url, name, cookie):
         'Cookie': cookie
     }
     attendance_url = url + '/attendance.php'
-    with requests.Session() as session:
-        with session.get(attendance_url, headers=headers) as res:
-            r = re.compile(r'请勿重复刷新')
-            r1 = re.compile(r'签到已得[\s]*\d+')
-            if r.search(res.text):
-                message = ' 重复签到'
-            elif r1.search(res.text):
-                message = ' 签到成功'
-            else:
-                message = ' cookie已过期'
-            result = f'{name} - {message}'
-            print(result)
-            return result
+    session = requests.Session()
+    res = session.get(attendance_url, headers=headers)
+    
+    r = re.compile(r'请勿重复刷新')
+    r1 = re.compile(r'签到已得[\s]*\d+')
+    
+    if r.search(res.text):
+        tip = ' 重复签到'
+    elif r1.search(res.text):
+        tip = ' 签到成功'
+    else:
+        tip = ' cookie已过期'
+    
+    result = f'站点：{name} - {tip}'
+    print(result)
+    return result
 
 if __name__ == "__main__":
     sites = parse_sites_from_env()
