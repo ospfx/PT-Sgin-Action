@@ -11,7 +11,7 @@ chat_id = os.environ.get("CHAT_ID","")
 thread_id = os.environ.get("THREAD_ID","")
 telegram_api_url = os.environ.get("TELEGRAM_API_URL","https://api.telegram.org")
 
-def telegram_Bot(message):
+def telegram_Bot(token,chat_id,thread_id=None,message):
     url = f'{telegram_api_url}/bot{token}/sendMessage'
     data = {
         'chat_id': chat_id,
@@ -96,6 +96,6 @@ if __name__ == "__main__":
     for site in sites:
         result = check_in(site['url'], site.get('name', 'Unknown'), site['cookie'])
         if telegram_bot_token and chat_id:
-          telegram_Bot(result)
+          telegram_Bot(telegram_bot_token,chat_id,thread_id,result)
         if pushplus_token:
           pushplus_ts(pushplus_token, result)
