@@ -3,7 +3,7 @@ import re
 import os
 import sys
 import json
-
+from json.decoder import JSONDecodeError
 
 pushplus_token = os.environ.get("PUSHPLUS_TOKEN")
 telegram_bot_token = os.environ.get("TELEGRAM_BOT_TOKEN","")
@@ -58,6 +58,7 @@ def parse_sites_from_env():
     while True:
         site_data = os.environ.get(f'SITE{site_index}')
         if not site_data:
+            print("not site data")
             break
         try:
             site = json.loads(site_data)
