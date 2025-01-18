@@ -20,8 +20,11 @@ def telegram_Bot(token,chat_id,message,thread_id=None):
     }
     r = requests.post(url, json=data)
     response_data = r.json()
-    msg = response_data['ok']
-    print()
+    
+    if response_data.get('ok', False):
+        msg = "Message sent successfully."
+    else:
+        msg = f"Error: {response_data.get('description', 'Unknown error')}"
     print(f"telegram推送结果：{msg}\n")
 
 def pushplus_ts(token, rw, msg):
