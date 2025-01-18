@@ -4,6 +4,7 @@ import os
 import sys
 import json
 from json.decoder import JSONDecodeError
+from curl_cffi import requests
 
 pushplus_token = os.environ.get("PUSHPLUS_TOKEN")
 telegram_bot_token = os.environ.get("TELEGRAM_BOT_TOKEN","")
@@ -21,6 +22,7 @@ def telegram_Bot(token,chat_id,message,thread_id=None):
     r = requests.post(url, json=data)
     response_data = r.json()
     msg = response_data['ok']
+    print()
     print(f"telegram推送结果：{msg}\n")
 
 def pushplus_ts(token, rw, msg):
