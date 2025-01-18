@@ -1,9 +1,9 @@
-import requests
 import re
 import os
 import sys
 import json
 from json.decoder import JSONDecodeError
+from curl_cffi import requests
 
 pushplus_token = os.environ.get("PUSHPLUS_TOKEN")
 telegram_bot_token = os.environ.get("TELEGRAM_BOT_TOKEN","")
