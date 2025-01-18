@@ -57,13 +57,14 @@ def parse_sites_from_env():
     site_index = 0
     while True:
         site_data = os.environ.get(f'SITE{site_index}')
+        
         if not site_data:
-            print("not site data")
             break
         try:
             site = json.loads(site_data)
             if 'url' in site and 'cookie' in site:
                 sites.append(site)
+                print(site.get('name', 'Unknown'),"Load")
             else:
                 print(f"Skipping malformed SITE{site_index}: {site_data}")
         except json.JSONDecodeError:
