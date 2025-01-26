@@ -11,9 +11,9 @@ check_in() {
     response=$(curl -s -H "User-Agent: ${user_agent}" -H "Cookie: ${cookie}" "${attendance_url}")
 
     # Check for patterns本次签到获得
-    if [[ "$response" =~ 请勿重复刷新 ]]; then
+    if [[ "$response" =~ (签到已得|请勿重复刷新) ]]; then
         tip=" 重复签到"
-    elif [[ "$response" =~ (签到已得|签到获得)[[:space:]]*([0-9]+) ]]; then
+    elif [[ "$response" =~ 签到获得[[:space:]]*([0-9]+) ]]; then
         local earned_points="${BASH_REMATCH[1]}"
         tip=" 签到已得${earned_points}"
     else
