@@ -27,8 +27,9 @@ jobs:
       - name: run
         env:
           SITE0: ${{ secrets.SITE0 }}
+          SITE1: ${{ secrets.SITE1 }}
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
           THREAD_ID: ${{ secrets.THREAD_ID }}
-        run: python pt_sgin.py
+        run: python pt_sgin.sh
