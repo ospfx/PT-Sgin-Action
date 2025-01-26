@@ -28,8 +28,8 @@ process_sites() {
     for i in $(seq 0 99); do
         local site_var="SITE${i}"
         local site_data="${!site_var}"
-        [[ -n "$site_data" ]] && break
-
+        [ ! "$site_data" ] && break
+        
         local name url cookie
         name=$(echo "$site_data" | jq -r '.name')
         url=$(echo "$site_data" | jq -r '.url')
