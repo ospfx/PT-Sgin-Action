@@ -7,7 +7,9 @@ tg_notify() {
     [[ -z "$TG_BOT_TOKEN" || -z "$TG_USER_ID" ]] && return
     local thread_id=${TG_THREAD_ID:+"&message_thread_id=$TG_THREAD_ID"}
     curl -s -X POST "https://${TG_API_HOST:-api.telegram.org}/bot$TG_BOT_TOKEN/sendMessage" \
-        -d "chat_id=$TG_USER_ID&parse_mode=HTML&text=✅ <b>$name</b> - $result$thread_id"
+        -d chat_id=${TG_USER_ID} \
+        -d message_thread_id=${TG_THREAD_ID} \
+        -d parse_mode=HTML -d text="✅${result}"
 }
 
 check_in() {
